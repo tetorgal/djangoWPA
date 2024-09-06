@@ -1,0 +1,50 @@
+<head>
+    <style>
+        body {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h1 {
+            font-size: 2.3rem;
+            font-weight: bold;
+            padding-left: 10px;
+        }
+        .hello-message {
+            color: rgb(34, 34, 39);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .poll-list {
+            list-style-type: none;
+
+        }
+        .poll-list a {
+            font-size: 2rem;
+            text-decoration: none;
+            color: rgb(33, 33, 53)
+        }
+        .poll-list a:hover{
+            text-decoration: underline;
+            color: rgb(47, 47, 75);
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+{% if latest_question_list %}
+    <p class="hello-message">Hola, Mundo!</p>  {{ edit_1 }}
+    <div class="card">
+        <h1>Preguntas</h1>
+        <ul class="poll-list">
+        {% for question in latest_question_list %}
+            <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
